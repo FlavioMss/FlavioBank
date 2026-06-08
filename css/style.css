@@ -1,0 +1,519 @@
+/* ============================================================
+   style.css - Feuille de style principale
+   Projet bancaire scolaire
+   Design sobre, professionnel, facile à modifier
+   ============================================================ */
+
+/* ---- Variables de couleur (modifier ici pour changer tout le thème) ---- */
+:root {
+    --couleur-principale:   #1a2e4a;   /* bleu marine foncé */
+    --couleur-secondaire:   #2c5282;   /* bleu moyen */
+    --couleur-accent:       #d4af37;   /* or */
+    --couleur-fond:         #f0f4f8;   /* gris clair */
+    --couleur-blanc:        #ffffff;
+    --couleur-texte:        #1a202c;
+    --couleur-texte-clair:  #718096;
+    --couleur-succes:       #2f855a;
+    --couleur-danger:       #c53030;
+    --couleur-avertissement:#b7791f;
+    --couleur-info:         #2b6cb0;
+    --couleur-bordure:      #e2e8f0;
+    --ombre:                0 2px 8px rgba(0,0,0,0.10);
+    --ombre-forte:          0 4px 20px rgba(0,0,0,0.15);
+    --rayon:                8px;
+    --font-principale:      'Georgia', 'Times New Roman', serif;
+    --font-interface:       'Trebuchet MS', 'Gill Sans', sans-serif;
+}
+
+/* ---- Reset de base ---- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-interface);
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================
+   BARRE DE NAVIGATION
+   ============================================================ */
+.navbar {
+    background-color: var(--couleur-principale);
+    color: var(--couleur-blanc);
+    padding: 0;
+    box-shadow: var(--ombre-forte);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--couleur-blanc);
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    font-size: 22px;
+    color: var(--couleur-accent);
+}
+
+.logo-text {
+    font-family: var(--font-principale);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Menu de navigation */
+.navbar-menu {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.navbar-menu a {
+    color: rgba(255,255,255,0.80);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--rayon);
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-menu a:hover {
+    background-color: rgba(255,255,255,0.12);
+    color: var(--couleur-blanc);
+}
+
+/* Zone utilisateur */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Badge de rôle */
+.user-role {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-admin   { background-color: var(--couleur-accent); color: var(--couleur-principale); }
+.role-employe { background-color: var(--couleur-secondaire); color: white; }
+.role-client  { background-color: #4a5568; color: white; }
+
+/* Bouton déconnexion */
+.btn-logout {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.85);
+    padding: 6px 14px;
+    border-radius: var(--rayon);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* ============================================================
+   CONTENU PRINCIPAL
+   ============================================================ */
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+/* ============================================================
+   PAGE DE CONNEXION
+   ============================================================ */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--couleur-principale) 0%, var(--couleur-secondaire) 100%);
+}
+
+.login-box {
+    background: var(--couleur-blanc);
+    padding: 48px 40px;
+    border-radius: 12px;
+    box-shadow: var(--ombre-forte);
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-logo .logo-icon {
+    font-size: 40px;
+    display: block;
+    color: var(--couleur-accent);
+    margin-bottom: 8px;
+}
+
+.login-logo h1 {
+    font-family: var(--font-principale);
+    font-size: 24px;
+    color: var(--couleur-principale);
+}
+
+.login-logo p {
+    color: var(--couleur-texte-clair);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   FORMULAIRES
+   ============================================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--couleur-texte);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--rayon);
+    font-size: 15px;
+    font-family: var(--font-interface);
+    color: var(--couleur-texte);
+    background-color: var(--couleur-blanc);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--couleur-secondaire);
+    box-shadow: 0 0 0 3px rgba(44,82,130,0.15);
+}
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: var(--rayon);
+    font-size: 14px;
+    font-family: var(--font-interface);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-principal  { background-color: var(--couleur-secondaire); color: white; }
+.btn-accent     { background-color: var(--couleur-accent); color: var(--couleur-principale); }
+.btn-succes     { background-color: var(--couleur-succes); color: white; }
+.btn-danger     { background-color: var(--couleur-danger); color: white; }
+.btn-neutre     { background-color: var(--couleur-bordure); color: var(--couleur-texte); }
+
+/* Bouton pleine largeur */
+.btn-bloc { width: 100%; text-align: center; padding: 12px; font-size: 16px; }
+
+/* ============================================================
+   CARTES / TABLEAUX DE BORD
+   ============================================================ */
+.page-titre {
+    margin-bottom: 28px;
+}
+
+.page-titre h1 {
+    font-family: var(--font-principale);
+    font-size: 28px;
+    color: var(--couleur-principale);
+    border-left: 4px solid var(--couleur-accent);
+    padding-left: 16px;
+}
+
+.page-titre p {
+    color: var(--couleur-texte-clair);
+    margin-top: 6px;
+    padding-left: 20px;
+}
+
+/* Grille de cartes statistiques */
+.stats-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.stat-carte {
+    background: var(--couleur-blanc);
+    border-radius: var(--rayon);
+    padding: 24px;
+    box-shadow: var(--ombre);
+    border-top: 3px solid var(--couleur-accent);
+}
+
+.stat-carte .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--couleur-texte-clair);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-carte .stat-valeur {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: var(--font-principale);
+    color: var(--couleur-principale);
+}
+
+.stat-carte .stat-detail {
+    font-size: 13px;
+    color: var(--couleur-texte-clair);
+    margin-top: 4px;
+}
+
+/* ============================================================
+   TABLEAUX
+   ============================================================ */
+.tableau-conteneur {
+    background: var(--couleur-blanc);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.tableau-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.tableau-entete h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--couleur-principale);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead th {
+    background-color: #f7fafc;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--couleur-texte-clair);
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+tbody td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--couleur-bordure);
+    color: var(--couleur-texte);
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:hover { background-color: #f7fafc; }
+
+/* ============================================================
+   BADGES / ÉTIQUETTES
+   ============================================================ */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.badge-depot    { background: #c6f6d5; color: var(--couleur-succes); }
+.badge-retrait  { background: #fed7d7; color: var(--couleur-danger); }
+.badge-virement { background: #bee3f8; color: var(--couleur-info); }
+.badge-admin    { background: #fefcbf; color: #744210; }
+.badge-employe  { background: #bee3f8; color: var(--couleur-info); }
+.badge-client   { background: #e2e8f0; color: #4a5568; }
+
+/* ============================================================
+   MESSAGES D'ALERTE
+   ============================================================ */
+.alerte {
+    padding: 14px 18px;
+    border-radius: var(--rayon);
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid;
+}
+
+.alerte-succes      { background: #f0fff4; border-color: var(--couleur-succes); color: var(--couleur-succes); }
+.alerte-erreur      { background: #fff5f5; border-color: var(--couleur-danger); color: var(--couleur-danger); }
+.alerte-info        { background: #ebf8ff; border-color: var(--couleur-info); color: var(--couleur-info); }
+.alerte-attention   { background: #fffaf0; border-color: var(--couleur-avertissement); color: var(--couleur-avertissement); }
+
+/* ============================================================
+   CARTE SIMPLE (boîte de contenu)
+   ============================================================ */
+.carte {
+    background: var(--couleur-blanc);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.carte h2 {
+    font-family: var(--font-principale);
+    font-size: 20px;
+    color: var(--couleur-principale);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+/* Affichage clé → valeur dans une carte */
+.info-ligne {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--couleur-bordure);
+    font-size: 15px;
+}
+
+.info-ligne:last-child { border-bottom: none; }
+
+.info-ligne .info-label {
+    color: var(--couleur-texte-clair);
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.info-ligne .info-valeur {
+    font-weight: bold;
+    color: var(--couleur-texte);
+}
+
+/* Solde mis en valeur */
+.solde-grand {
+    font-size: 36px;
+    font-family: var(--font-principale);
+    color: var(--couleur-principale);
+    font-weight: bold;
+}
+
+.solde-positif { color: var(--couleur-succes); }
+.solde-negatif { color: var(--couleur-danger); }
+
+/* ============================================================
+   IBAN - affichage formaté
+   ============================================================ */
+.iban-affichage {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    background: #f7fafc;
+    padding: 10px 14px;
+    border-radius: var(--rayon);
+    border: 1px solid var(--couleur-bordure);
+    letter-spacing: 2px;
+    color: var(--couleur-principale);
+}
+
+/* ============================================================
+   PIED DE PAGE
+   ============================================================ */
+.footer {
+    background-color: var(--couleur-principale);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+/* ============================================================
+   UTILITAIRES
+   ============================================================ */
+.texte-centre   { text-align: center; }
+.texte-droite   { text-align: right; }
+.marge-bas      { margin-bottom: 16px; }
+.marge-bas-lg   { margin-bottom: 32px; }
+.flex-entre     { display: flex; justify-content: space-between; align-items: center; }
+.flex-droite    { display: flex; justify-content: flex-end; gap: 8px; }
+.actions-groupe { display: flex; gap: 6px; }
